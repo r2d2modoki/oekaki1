@@ -10,7 +10,15 @@
     $(function() {
         var canvas = $('#canvas')[0];
         var context = canvas.getContext('2d');
+        //色の変更
+        context.lineWidth=7;
+        context.lineJoin = 'round';
+        context.lineCap = 'round';
+        
+        
         var startX, startY;
+        var color = 'red';
+        
         $('canvas').on('touchstart', function(event) {
             // 画面がタッチされたときの処理を記述する
             // デフォルト動作を回避
@@ -33,6 +41,11 @@
             var point = getCanvasPoint(pageX, pageY);
             var endX = point.x;
             var endY = point.y;
+            
+            //colorを設定する
+            context.strokeStyle = color;
+            
+            
             // 直線を描画
             context.beginPath();
             context.moveTo(startX, startY);
